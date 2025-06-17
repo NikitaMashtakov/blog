@@ -32,6 +32,6 @@ export const Header = styled(HeaderContainer)`
   width: inherit;
   height: 120px;
   padding: 20px 40px;
-  box-shadow: 0 -7px 35px 9px #616161;
+  box-shadow: 0 -2px 17px #616161;
   background-color: #fff;
 `;
