@@ -1,8 +1,15 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const IconContainer = ({ className }) => {
-  return <div className={className}></div>;
+const IconContainer = ({ className, id }) => {
+  return (
+    <div className={className}>
+      <i className={`fa ${id}`} aria-hidden="true" />
+    </div>
+  );
 };
 
-export const Icon = styled(IconContainer)``;
+export const Icon = styled(IconContainer)`
+  font-size: ${({ size = '24px' }) => size};
+  display: flex;
+  align-items: center;
+`;

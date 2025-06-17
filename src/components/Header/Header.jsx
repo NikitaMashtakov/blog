@@ -1,13 +1,37 @@
 import styled from 'styled-components';
-import { Logo } from '../../components';
+import { Logo, ControlPanel } from '../../components';
+
+const Description = styled.div`
+  font-style: italic;
+`;
 
 export const HeaderContainer = ({ className }) => {
   return (
-    <div className={className}>
+    <header className={className}>
       <Logo />
-      <div>Header</div>
-    </div>
+      <Description>
+        <p>
+          Веб-технологии
+          <br />
+          Написание кода
+          <br />
+          Разбор ошибок
+        </p>
+      </Description>
+      <ControlPanel />
+    </header>
   );
 };
 
-export const Header = styled(HeaderContainer)``;
+export const Header = styled(HeaderContainer)`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  width: inherit;
+  height: 120px;
+  padding: 20px 40px;
+  box-shadow: 0 -7px 35px 9px #616161;
+  background-color: #fff;
+`;
