@@ -4,9 +4,9 @@ import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { server } from '../../bff/server';
-import { Input } from '../../components';
+import { FormError, Input } from '../../components';
 import styled from 'styled-components';
-import { Button, FormError } from '../../components/';
+import { Button } from '../../components/';
 import { Link, Navigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../actions';
@@ -20,7 +20,7 @@ const StyledLink = styled(Link)`
   font-size: 18px;
 `;
 
-const authFormSchema = yup.object().shape({
+const regFormSchema = yup.object().shape({
   login: yup
     .string()
     .required('Логин не должен быть пустым')
@@ -36,9 +36,13 @@ const authFormSchema = yup.object().shape({
     )
     .min(6, 'Пароль должен быть длиннее 6 символов')
     .max(30, 'Пароль не должен быть длиннее 30 символов'),
+  passcheck: yup
+    .string()
+    .required('Пароль не должен быть пустым')
+    .oneOf([yup.ref('password'), null], 'Пароли не совпадают'),
 });
 
-const AuthPageContainer = ({ className }) => {
+const RegistrationPageContainer = ({ className }) => {
   const {
     register,
     handleSubmit,
@@ -47,15 +51,17 @@ const AuthPageContainer = ({ className }) => {
     defaultValues: {
       login: '',
       password: '',
+      passcheck: '',
     },
-    resolver: yupResolver(authFormSchema),
+    resolver: yupResolver(regFormSchema),
   });
 
   const [serverError, setServerError] = useState();
   const dispatch = useDispatch();
   const roleId = useSelector(selectUserRole);
+
   const onSubmit = ({ login, password }) => {
-    server.authorize(login, password).then(({ error, res }) => {
+    server.register(login, password).then(({ error, res }) => {
       if (error) {
         setServerError(`Ошибка запроса ${error}`);
         return;
@@ -63,15 +69,18 @@ const AuthPageContainer = ({ className }) => {
       dispatch(setUser(res));
     });
   };
-  const formError = errors?.login?.message || errors?.password?.message;
+
+  const formError =
+    errors?.login?.message || errors?.password?.message || errors?.passcheck?.message;
   const errorMessage = formError || serverError;
 
   if (roleId !== ROLE.GUEST) {
     return <Navigate to={'/'} />;
   }
+
   return (
     <div className={className}>
-      <h2>Вход</h2>
+      <h2>Регистрация</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"
@@ -83,8 +92,13 @@ const AuthPageContainer = ({ className }) => {
           placeholder="Пароль"
           {...register('password', { onChange: () => setServerError(null) })}
         />
+        <Input
+          type="password"
+          placeholder="Повторите пароль"
+          {...register('passcheck', { onChange: () => setServerError(null) })}
+        />
         <Button type="submit" disabled={formError}>
-          Войти
+          Зарегистрироваться
         </Button>
         {errorMessage && <FormError>{errorMessage}</FormError>}
         <StyledLink to={'/register'}>Нет аккаунта? Зарегистрироваться</StyledLink>
@@ -93,9 +107,9 @@ const AuthPageContainer = ({ className }) => {
   );
 };
 
-AuthPageContainer.propTypes = {};
+RegistrationPageContainer.propTypes = {};
 
-export const AuthPage = styled(AuthPageContainer)`
+export const RegistrationPage = styled(RegistrationPageContainer)`
   display: flex;
   flex-direction: column;
   justify-content: center;

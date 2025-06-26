@@ -1,7 +1,7 @@
 import { generateDate } from './generateDate';
 
 export const addUser = async (login, password) =>
-  fetch('http://localhost:3005/users', {
+  fetch('http://localhost:3000/users', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
@@ -12,4 +12,4 @@ export const addUser = async (login, password) =>
       registered_at: generateDate(),
       role_id: 2,
     }),
-  });
+  }).then((createdUser) => createdUser.json());

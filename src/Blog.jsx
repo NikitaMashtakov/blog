@@ -22,7 +22,6 @@ function Blog() {
       <Header />
       <Content>
         <Outlet />
-        <i className="fa fa-camera-retro"></i>
       </Content>
       <Footer />
     </AppColumn>

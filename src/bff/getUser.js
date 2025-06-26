@@ -1,6 +1,6 @@
-export const getUser = async (authLogin) => {
-  const users = await fetch('http://localhost:3005/users').then((loadedUsers) =>
-    loadedUsers.json(),
-  );
-  return users.find(({ login }) => login === authLogin);
-};
+export const getUser = async (loginToFind) =>
+  fetch(`http://localhost:3000/users?login=${loginToFind}`)
+    .then((loadedUser) => {
+      return loadedUser.json();
+    })
+    .then(([user]) => user);

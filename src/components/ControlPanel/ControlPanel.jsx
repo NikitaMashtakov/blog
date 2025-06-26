@@ -2,43 +2,68 @@ import React from 'react';
 import styled from 'styled-components';
 import { Icon } from '../Icon/Icon';
 import { Link, useNavigate } from 'react-router';
+import { Button } from '../Button/Button';
+import { useDispatch, useSelector } from 'react-redux';
+import { ROLE } from '../../constants/role';
+import { selectUserLogin, selectUserRole } from '../../selectors';
+import { logout } from '../../actions';
+import { selectUserSession } from '../../selectors/selectUserSession';
 
 const PanelRow = styled.div`
   display: flex;
   align-items: center;
   align-self: self-end;
   gap: 24px;
-  justify-content: center;
+  justify-content: end;
+  width: 100%;
+`;
+
+const StyledIcon = styled.div`
+  cursor: pointer;
 `;
 
 const StyledLink = styled(Link)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  width: 100px;
-  height: 32px;
-  border: 1px solid black;
-  border-radius: 3px;
-  background-color: #eee;
+  width: 100%;
 `;
 
-const BackwardButton = styled.div`
-  cursor: pointer;
+const UserName = styled.div`
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: -16px;
 `;
 
 const ControlPanelContainer = ({ className }) => {
   const navigate = useNavigate();
+  const roleId = useSelector(selectUserRole);
+  const login = useSelector(selectUserLogin);
+  const session = useSelector(selectUserSession);
+  const dispatch = useDispatch();
+
   return (
     <div className={className}>
       <PanelRow>
-        <StyledLink to={'login'}>Войти</StyledLink>
-        {/* <Icon id="fa-sign-out" /> */}
+        {roleId === ROLE.GUEST ? (
+          <StyledLink to={'login'}>
+            <Button>Войти</Button>
+          </StyledLink>
+        ) : (
+          <>
+            <UserName>{login}</UserName>
+            <StyledIcon
+              onClick={() => {
+                dispatch(logout(session));
+              }}
+            >
+              <Icon id="fa-sign-out" />
+            </StyledIcon>
+          </>
+        )}
+        {/*  */}
       </PanelRow>
       <PanelRow>
-        <BackwardButton onClick={() => navigate(-1)}>
+        <StyledIcon onClick={() => navigate(-1)}>
           <Icon id="fa-backward" />
-        </BackwardButton>
+        </StyledIcon>
         <Link to={'post'}>
           <Icon id="fa-file-text-o" />
         </Link>
