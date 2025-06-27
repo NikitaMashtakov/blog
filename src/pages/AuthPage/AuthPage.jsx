@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../actions';
 import { selectUserRole } from '../../selectors';
 import { ROLE } from '../../constants';
+import { H2 } from '../../components/H2/H2';
 
 const StyledLink = styled(Link)`
   text-align: center;
@@ -71,7 +72,7 @@ const AuthPageContainer = ({ className }) => {
   }
   return (
     <div className={className}>
-      <h2>Вход</h2>
+      <H2>Вход</H2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"
@@ -101,6 +102,7 @@ export const AuthPage = styled(AuthPageContainer)`
   justify-content: center;
   align-items: center;
   padding-top: 20px;
+
   & > form {
     display: flex;
     flex-direction: column;

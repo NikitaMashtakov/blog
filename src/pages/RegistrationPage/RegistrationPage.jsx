@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../actions';
 import { selectUserRole } from '../../selectors';
 import { ROLE } from '../../constants';
+import { H2 } from '../../components/H2/H2';
 
 const StyledLink = styled(Link)`
   text-align: center;
@@ -80,7 +81,7 @@ const RegistrationPageContainer = ({ className }) => {
 
   return (
     <div className={className}>
-      <h2>Регистрация</h2>
+      <H2>Регистрация</H2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="text"
