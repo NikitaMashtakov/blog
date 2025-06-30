@@ -1,12 +1,39 @@
 import styled from 'styled-components';
 import { UsersTable } from '../../components/UsersTable/UserTable';
 import { H2 } from '../../components/H2/H2';
+import { server } from './../../bff';
+import { useServerRequest } from '../../hooks';
+import { useEffect, useState } from 'react';
+import { ROLE } from '../../constants';
 
 const UsersPageContainer = () => {
+  const [roles, setRoles] = useState([]);
+  const [users, setUsers] = useState([]);
+  const [errorMessage, setErrorMessage] = useState('');
+  const requestServer = useServerRequest();
+
+  useEffect(() => {
+    Promise.all([requestServer('fetchUsers'), requestServer('fetchRoles')]).then(
+      ([usersRes, rolesRes]) => {
+        if (usersRes || rolesRes) {
+          setErrorMessage(usersRes.error || rolesRes.error);
+        }
+        setUsers(usersRes.res);
+        setRoles(rolesRes.res.filter((role) => role.id !== ROLE.GUEST));
+      },
+    );
+  }, [requestServer]);
+
   return (
     <>
-      <H2>Пользователи</H2>
-      <UsersTable />
+      {errorMessage ? (
+        <div>{errorMessage}</div>
+      ) : (
+        <>
+          <H2>Пользователи</H2>
+          <UsersTable users={users} roles={roles} />
+        </>
+      )}
     </>
   );
 };

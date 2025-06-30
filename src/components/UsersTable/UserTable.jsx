@@ -5,17 +5,30 @@ import { getRoles } from '../../bff/api/getRoles';
 import { getUsers } from '../../bff/api/getUsers';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { UserRow } from './UserRow/UserRow';
 
-const UserTableContainer = ({ className }) => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    getRoles().then((data) => dispatch({ type: 'SET_ROLES', payload: { roles: data } }));
-    getUsers().then((data) => dispatch({ type: 'SET_USERS', payload: { users: data } }));
-  }, [dispatch]);
+const UserTableContainer = ({ users, roles, className }) => {
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   getRoles().then((data) => dispatch({ type: 'SET_ROLES', payload: { roles: data } }));
+  //   getUsers().then((data) => dispatch({ type: 'SET_USERS', payload: { users: data } }));
+  // }, [dispatch]);
   return (
     <table className={className}>
       <TableHeader />
-      <TableBody />
+      <tbody>
+        {users &&
+          users.map(({ id, login, registeredAt, roleId }) => (
+            <UserRow
+              key={id}
+              id={id}
+              login={login}
+              registeredAt={registeredAt}
+              roleId={roleId}
+              roles={roles}
+            />
+          ))}
+      </tbody>
     </table>
   );
 };

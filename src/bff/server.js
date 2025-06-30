@@ -1,6 +1,17 @@
-import { addUser } from './api/addUser';
-import { createSession } from './createSession';
-import { getUser } from './api/getUser';
-import { sessions } from './sessions';
+import {
+  authorize,
+  fetchRoles,
+  fetchUsers,
+  logout,
+  register,
+  updateUserRole,
+} from './operations';
 
-export const server = {};
+export const server = {
+  authorize,
+  logout,
+  register,
+  fetchRoles,
+  fetchUsers,
+  updateUserRole,
+};

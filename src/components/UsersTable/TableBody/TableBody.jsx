@@ -7,12 +7,5 @@ import { selectRoles } from '../../../selectors/selectRoles';
 
 export const TableBody = () => {
   const users = useSelector(selectUsers);
-  return (
-    <tbody>
-      {users &&
-        users.map(({ id, login, registeredAt, roleId }) => (
-          <UserRow key={id} login={login} registeredAt={registeredAt} roleId={roleId} />
-        ))}
-    </tbody>
-  );
+  return <></>;
 };

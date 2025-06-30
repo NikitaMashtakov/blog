@@ -18,10 +18,6 @@ const PanelRow = styled.div`
   width: 100%;
 `;
 
-const StyledIcon = styled.div`
-  cursor: pointer;
-`;
-
 const StyledLink = styled(Link)`
   width: 100%;
 `;
@@ -49,21 +45,25 @@ const ControlPanelContainer = ({ className }) => {
         ) : (
           <>
             <UserName>{login}</UserName>
-            <StyledIcon
+
+            <Icon
+              id="fa-sign-out"
               onClick={() => {
                 dispatch(logout(session));
               }}
-            >
-              <Icon id="fa-sign-out" />
-            </StyledIcon>
+            />
           </>
         )}
         {/*  */}
       </PanelRow>
       <PanelRow>
-        <StyledIcon onClick={() => navigate(-1)}>
-          <Icon id="fa-backward" />
-        </StyledIcon>
+        <Icon
+          id="fa-backward"
+          onClick={() => {
+            console.log('click');
+            navigate(-1);
+          }}
+        />
         <Link to={'post'}>
           <Icon id="fa-file-text-o" />
         </Link>
