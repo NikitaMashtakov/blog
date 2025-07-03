@@ -7,7 +7,7 @@ import { useState } from 'react';
 import { useServerRequest } from '../../../hooks';
 import { Loader } from '../../Loader/Loader';
 
-export const UserRow = ({ id, login, registeredAt, roleId, roles }) => {
+export const UserRow = ({ id, login, registeredAt, roleId, roles, onDeleteUser }) => {
   const requestServer = useServerRequest();
   const [role, setRole] = useState(roleId);
   const [newRole, setNewRole] = useState(null);
@@ -62,7 +62,7 @@ export const UserRow = ({ id, login, registeredAt, roleId, roles }) => {
       </td>
 
       <td>
-        <Icon id="fa-trash-o" />
+        <Icon id="fa-trash-o" onClick={() => onDeleteUser(id)} />
       </td>
     </tr>
   );

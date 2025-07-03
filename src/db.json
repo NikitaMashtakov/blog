@@ -13,20 +13,6 @@
       "registered_at": "2054-08-22 06:51",
       "role_id": 1,
       "id": "bwSyC9P"
-    },
-    {
-      "login": "ivan2",
-      "password": "123456",
-      "registered_at": "2053-08-24 11:49",
-      "role_id": 2,
-      "id": "ln6mKSn"
-    },
-    {
-      "login": "asd",
-      "password": "123123",
-      "registered_at": "2044-08-04 01:15",
-      "role_id": 2,
-      "id": "9rwLhoN"
     }
   ],
   "roles": [
