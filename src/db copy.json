@@ -114,305 +114,206 @@
   ],
   "comments": [
     {
-      "id": "1",
-      "author_id": "bwSyC9P",
-      "post_id": "1",
-      "content": "Восхитительное описание!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "2",
-      "author_id": "bwSyC9P",
-      "post_id": "1",
-      "content": "Очень интересно!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "3",
-      "author_id": "bwSyC9P",
-      "post_id": "1",
-      "content": "Хочу туда!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "4",
-      "author_id": "bwSyC9P",
-      "post_id": "2",
-      "content": "Львы - величественные!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "5",
-      "author_id": "bwSyC9P",
-      "post_id": "2",
-      "content": "Звучит захватывающе!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "6",
-      "author_id": "bwSyC9P",
-      "post_id": "2",
-      "content": "Когда планируете поездку?",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "7",
-      "author_id": "bwSyC9P",
-      "post_id": "3",
-      "content": "Италия - рай для гурманов!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "8",
-      "author_id": "OGpsp1u",
-      "post_id": "3",
-      "content": "Какие места рекомендуете?",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "9",
-      "author_id": "OGpsp1u",
-      "post_id": "3",
-      "content": "Вкусно звучит!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "10",
-      "author_id": "OGpsp1u",
-      "post_id": "4",
-      "content": "Раскрашивание - замечательный способ расслабиться!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "11",
-      "author_id": "OGpsp1u",
-      "post_id": "4",
-      "content": "Какие материалы нужны?",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "12",
-      "author_id": "001",
-      "post_id": "4",
-      "content": "Спасибо за идею!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "13",
-      "author_id": "OGpsp1u",
-      "post_id": "5",
-      "content": "Бали - мечта!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "14",
-      "author_id": "OGpsp1u",
-      "post_id": "5",
-      "content": "Какие места стоит посетить?",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "15",
-      "author_id": "001",
-      "post_id": "5",
-      "content": "Удивительное описание!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "16",
-      "author_id": "001",
-      "post_id": "6",
-      "content": "Астрономия - мой новый хобби!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "17",
-      "author_id": "001",
-      "post_id": "6",
-      "content": "Где найти хороший телескоп?",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "18",
-      "author_id": "OGpsp1u",
-      "post_id": "6",
-      "content": "Спасибо за рекомендации!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "19",
-      "author_id": "OGpsp1u",
-      "post_id": "7",
-      "content": "Рукоделие из перьев - интересно!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "20",
-      "author_id": "OGpsp1u",
-      "post_id": "7",
-      "content": "Какие виды перьев лучше всего использовать?",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "21",
-      "author_id": "OGpsp1u",
-      "post_id": "7",
-      "content": "Вдохновило!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "22",
-      "author_id": "OGpsp1u",
-      "post_id": "8",
-      "content": "Старинные города Франции - красиво!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "23",
-      "author_id": "OGpsp1u",
-      "post_id": "8",
-      "content": "Какие города рекомендуете посетить?",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "24",
-      "author_id": "OGpsp1u",
-      "post_id": "8",
-      "content": "Звучит захватывающе!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "25",
-      "author_id": "OGpsp1u",
-      "post_id": "9",
-      "content": "Пустыня - удивительное место!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "26",
-      "author_id": "OGpsp1u",
-      "post_id": "9",
-      "content": "Какие места для наблюдения за закатами?",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "27",
-      "author_id": "OGpsp1u",
-      "post_id": "9",
-      "content": "Восхищаюсь!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "28",
-      "author_id": "OGpsp1u",
-      "post_id": "10",
-      "content": "Керамика - замечательный хобби!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "29",
-      "author_id": "OGpsp1u",
-      "post_id": "10",
-      "content": "Какие материалы нужны для начала?",
-      "published_at": "2023-10-15"
-    },
-    {
-      "id": "30",
-      "author_id": "OGpsp1u",
-      "post_id": "10",
-      "content": "Вдохновило!",
-      "published_at": "2023-10-15"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fdsfs",
-      "published_at": "2025-07-10 10:09",
-      "id": "JdDEnyj"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fdasd",
-      "published_at": "2025-07-10 10:13",
-      "id": "LCtqm8Y"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fdasd",
-      "published_at": "2025-07-10 10:14",
-      "id": "PBJ-XCW"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fsafaf",
-      "published_at": "2025-07-10 10:14",
-      "id": "J41XGjp"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fsafaffsafafsafa",
-      "published_at": "2025-07-10 10:14",
-      "id": "MsHRM-s"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "feefsefs",
-      "published_at": "2025-07-10 10:15",
-      "id": "AcHMETg"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "dweqw",
-      "published_at": "2025-07-12 12:26",
-      "id": "3dbZfGd"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fsa",
-      "published_at": "2025-07-12 12:29",
-      "id": "Kv3W2L3"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "dsada",
-      "published_at": "2025-07-12 12:44",
-      "id": "Os1jmsI"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fsafa",
-      "published_at": "2025-07-12 12:44",
-      "id": "lqOSwAc"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fsafa",
-      "published_at": "2025-07-12 12:46",
-      "id": "lcpUqAN"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fsafa",
-      "published_at": "2025-07-12 12:46",
-      "id": "dQ-OTjs"
-    }
-  ],
-  "sessions": [
-    {
-      "hash": "0.39971251885210068444109765550820156931877136230469",
-      "user_id": "001",
-      "id": 1
+      "1": [
+        {
+          "id": "1",
+          "author_id": "user1",
+          "post_id": "1",
+          "content": "Восхитительное описание!"
+        },
+        {
+          "id": "2",
+          "author_id": "user2",
+          "post_id": "1",
+          "content": "Очень интересно!"
+        },
+        {
+          "id": "3",
+          "author_id": "user3",
+          "post_id": "1",
+          "content": "Хочу туда!"
+        }
+      ],
+      "2": [
+        {
+          "id": "4",
+          "author_id": "user4",
+          "post_id": "2",
+          "content": "Львы - величественные!"
+        },
+        {
+          "id": "5",
+          "author_id": "user5",
+          "post_id": "2",
+          "content": "Звучит захватывающе!"
+        },
+        {
+          "id": "6",
+          "author_id": "user6",
+          "post_id": "2",
+          "content": "Когда планируете поездку?"
+        }
+      ],
+      "3": [
+        {
+          "id": "7",
+          "author_id": "user7",
+          "post_id": "3",
+          "content": "Италия - рай для гурманов!"
+        },
+        {
+          "id": "8",
+          "author_id": "user8",
+          "post_id": "3",
+          "content": "Какие места рекомендуете?"
+        },
+        {
+          "id": "9",
+          "author_id": "user9",
+          "post_id": "3",
+          "content": "Вкусно звучит!"
+        }
+      ],
+      "4": [
+        {
+          "id": "10",
+          "author_id": "user10",
+          "post_id": "4",
+          "content": "Раскрашивание - замечательный способ расслабиться!"
+        },
+        {
+          "id": "11",
+          "author_id": "user11",
+          "post_id": "4",
+          "content": "Какие материалы нужны?"
+        },
+        {
+          "id": "12",
+          "author_id": "user12",
+          "post_id": "4",
+          "content": "Спасибо за идею!"
+        }
+      ],
+      "5": [
+        {
+          "id": "13",
+          "author_id": "user13",
+          "post_id": "5",
+          "content": "Бали - мечта!"
+        },
+        {
+          "id": "14",
+          "author_id": "user14",
+          "post_id": "5",
+          "content": "Какие места стоит посетить?"
+        },
+        {
+          "id": "15",
+          "author_id": "user15",
+          "post_id": "5",
+          "content": "Удивительное описание!"
+        }
+      ],
+      "6": [
+        {
+          "id": "16",
+          "author_id": "user16",
+          "post_id": "6",
+          "content": "Астрономия - мой новый хобби!"
+        },
+        {
+          "id": "17",
+          "author_id": "user17",
+          "post_id": "6",
+          "content": "Где найти хороший телескоп?"
+        },
+        {
+          "id": "18",
+          "author_id": "user18",
+          "post_id": "6",
+          "content": "Спасибо за рекомендации!"
+        }
+      ],
+      "7": [
+        {
+          "id": "19",
+          "author_id": "user19",
+          "post_id": "7",
+          "content": "Рукоделие из перьев - интересно!"
+        },
+        {
+          "id": "20",
+          "author_id": "user20",
+          "post_id": "7",
+          "content": "Какие виды перьев лучше всего использовать?"
+        },
+        {
+          "id": "21",
+          "author_id": "user21",
+          "post_id": "7",
+          "content": "Вдохновило!"
+        }
+      ],
+      "8": [
+        {
+          "id": "22",
+          "author_id": "user22",
+          "post_id": "8",
+          "content": "Старинные города Франции - красиво!"
+        },
+        {
+          "id": "23",
+          "author_id": "user23",
+          "post_id": "8",
+          "content": "Какие города рекомендуете посетить?"
+        },
+        {
+          "id": "24",
+          "author_id": "user24",
+          "post_id": "8",
+          "content": "Звучит захватывающе!"
+        }
+      ],
+      "9": [
+        {
+          "id": "25",
+          "author_id": "user25",
+          "post_id": "9",
+          "content": "Пустыня - удивительное место!"
+        },
+        {
+          "id": "26",
+          "author_id": "user26",
+          "post_id": "9",
+          "content": "Какие места для наблюдения за закатами?"
+        },
+        {
+          "id": "27",
+          "author_id": "user27",
+          "post_id": "9",
+          "content": "Восхищаюсь!"
+        }
+      ],
+      "10": [
+        {
+          "id": "28",
+          "author_id": "user28",
+          "post_id": "10",
+          "content": "Керамика - замечательный хобби!"
+        },
+        {
+          "id": "29",
+          "author_id": "user29",
+          "post_id": "10",
+          "content": "Какие материалы нужны для начала?"
+        },
+        {
+          "id": "30",
+          "author_id": "user30",
+          "post_id": "10",
+          "content": "Вдохновило!"
+        }
+      ]
     }
   ]
 }

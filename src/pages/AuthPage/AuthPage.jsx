@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { server } from '../../bff/server';
-import { Input } from '../../components';
-import styled from 'styled-components';
-import { Button, FormError } from '../../components/';
 import { Link, Navigate } from 'react-router';
+import { server } from 'bff';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from '../../actions';
-import { selectUserRole } from '../../selectors';
-import { ROLE } from '../../constants';
-import { H2 } from '../../components/H2/H2';
+import { setUser } from 'actions';
+import { selectUserRole } from 'selectors';
+import { ROLE } from 'constants';
+import { Button, FormError, Input, H2 } from 'components';
+import styled from 'styled-components';
+import { useServerRequest } from 'hooks';
 
 const StyledLink = styled(Link)`
   text-align: center;
@@ -55,13 +54,16 @@ const AuthPageContainer = ({ className }) => {
   const [serverError, setServerError] = useState();
   const dispatch = useDispatch();
   const roleId = useSelector(selectUserRole);
+  const requestServer = useServerRequest();
+
   const onSubmit = ({ login, password }) => {
-    server.authorize(login, password).then(({ error, res }) => {
+    requestServer('authorize', login, password).then(({ error, res }) => {
       if (error) {
         setServerError(`Ошибка запроса ${error}`);
         return;
       }
       dispatch(setUser(res));
+      sessionStorage.setItem('user', JSON.stringify(res));
     });
   };
   const formError = errors?.login?.message || errors?.password?.message;

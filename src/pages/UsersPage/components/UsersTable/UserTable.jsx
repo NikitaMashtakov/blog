@@ -1,8 +1,4 @@
-import { useEffect } from 'react';
 import { TableHeader } from './TableHeader/TableHeader';
-import { getRoles } from '../../bff/api/getRoles';
-import { getUsers } from '../../bff/api/getUsers';
-import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { UserRow } from './UserRow/UserRow';
 

@@ -1,10 +1,9 @@
-import styled from 'styled-components';
-import { UsersTable } from '../../components/UsersTable/UserTable';
-import { H2 } from '../../components/H2/H2';
-import { server } from './../../bff';
-import { useServerRequest } from '../../hooks';
+import { UsersTable } from './components/UsersTable/UserTable';
+import { H2 } from 'components';
+import { useServerRequest } from 'hooks';
 import { useEffect, useState } from 'react';
-import { ROLE } from '../../constants';
+import { ROLE } from 'constants';
+import styled from 'styled-components';
 
 const UsersPageContainer = () => {
   const [roles, setRoles] = useState([]);
@@ -23,7 +22,6 @@ const UsersPageContainer = () => {
         setRoles(rolesRes.res.filter((role) => role.id !== ROLE.GUEST));
       },
     );
-    console.log('effect');
   }, [requestServer, shouldComponentUpdate]);
 
   const onDeleteUser = async (userId) => {

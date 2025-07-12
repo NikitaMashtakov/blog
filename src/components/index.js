@@ -6,3 +6,5 @@ export * from './ControlPanel/ControlPanel';
 export * from './Input/Input';
 export * from './Button/Button';
 export * from './FormError/FormError';
+export * from './H2/H2';
+export * from './Loader/Loader';

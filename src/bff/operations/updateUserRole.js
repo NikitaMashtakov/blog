@@ -2,10 +2,10 @@ import { ROLE } from './../constants';
 import { sessions } from '../sessions';
 import { setUserRole } from '../api';
 
-export const updateUserRole = async (userSession, userId, newRoleId) => {
+export const updateUserRole = async (hash, userId, newRoleId) => {
   const accessRoles = [ROLE.ADMIN];
 
-  if (!sessions.access(userSession, accessRoles)) {
+  if (!sessions.access(hash, accessRoles)) {
     return {
       error: 'Access denied',
       res: null,

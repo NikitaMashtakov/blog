@@ -12,7 +12,9 @@ export const userReducer = (state = initialUserState, action) => {
   const { type, payload } = action;
   switch (type) {
     case ACTION_TYPE.SET_USER: {
-      return { ...state, ...payload };
+      const userState = { ...state, ...payload };
+      // localStorage.setItem;
+      return userState;
     }
     case ACTION_TYPE.LOGOUT: {
       return initialUserState;

@@ -1,11 +1,6 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { ROLE } from './../../../constants';
-import { Icon } from './../../Icon/Icon';
-import { selectRoles } from '../../../selectors/selectRoles';
-import styled from 'styled-components';
+import { Icon, Loader } from './../../../../../components';
 import { useState } from 'react';
-import { useServerRequest } from '../../../hooks';
-import { Loader } from '../../Loader/Loader';
+import { useServerRequest } from './../../../../../hooks';
 
 export const UserRow = ({ id, login, registeredAt, roleId, roles, onDeleteUser }) => {
   const requestServer = useServerRequest();

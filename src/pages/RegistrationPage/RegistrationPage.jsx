@@ -3,16 +3,15 @@ import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { server } from '../../bff/server';
-import { FormError, Input } from '../../components';
-import styled from 'styled-components';
-import { Button } from '../../components/';
 import { Link, Navigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser } from '../../actions';
-import { selectUserRole } from '../../selectors';
-import { ROLE } from '../../constants';
-import { H2 } from '../../components/H2/H2';
+import { server } from 'bff';
+import { FormError, Input, Button, H2 } from 'components';
+import { setUser } from 'actions';
+import { selectUserRole } from 'selectors';
+import { ROLE } from 'constants';
+import styled from 'styled-components';
+import { useServerRequest } from 'hooks';
 
 const StyledLink = styled(Link)`
   text-align: center;
@@ -60,9 +59,10 @@ const RegistrationPageContainer = ({ className }) => {
   const [serverError, setServerError] = useState();
   const dispatch = useDispatch();
   const roleId = useSelector(selectUserRole);
+  const requestServer = useServerRequest();
 
   const onSubmit = ({ login, password }) => {
-    server.register(login, password).then(({ error, res }) => {
+    requestServer('register', login, password).then(({ error, res }) => {
       if (error) {
         setServerError(`Ошибка запроса ${error}`);
         return;

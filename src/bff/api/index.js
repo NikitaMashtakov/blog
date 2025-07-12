@@ -4,3 +4,7 @@ export * from './getUser';
 export * from './getUsers';
 export * from './setUserRole';
 export * from './deleteUser';
+export * from './getPost';
+export * from './addSession';
+export * from './getSession';
+export * from './deleteSession';

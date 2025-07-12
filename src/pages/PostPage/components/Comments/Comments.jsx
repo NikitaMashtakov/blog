@@ -1,0 +1,79 @@
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Comment } from './components/Comment/Comment';
+import { Icon } from 'components';
+import { useParams } from 'react-router';
+import { useServerRequest } from 'hooks';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCommentAsync } from 'actions/addCommentAsync';
+import { selectUserId } from 'selectors/selectUserId';
+
+const CommentsContainer = ({ className, comments, postId }) => {
+  const [text, setText] = useState('');
+  const requestServer = useServerRequest();
+  const dispatch = useDispatch();
+  const userId = useSelector(selectUserId);
+
+  const onCreateComment = (authorId, postId, content) => {
+    dispatch(addCommentAsync(requestServer, authorId, postId, content));
+    setText('');
+  };
+
+  return (
+    <div className={className}>
+      <div className="new-comment">
+        <textarea
+          name="new"
+          id="new-comment"
+          placeholder="Комментарий"
+          value={text}
+          onChange={({ target }) => setText(target.value)}
+        />
+        <Icon
+          id="fa-paper-plane-o"
+          onClick={() => onCreateComment(userId, postId, text)}
+        />
+      </div>
+      <div className="comments">
+        {comments.map(({ id, authorId, content, publishedAt }) => (
+          <Comment
+            key={id}
+            id={id}
+            authorId={authorId}
+            content={content}
+            publishedAt={publishedAt}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export const Comments = styled(CommentsContainer)`
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  /* display: flex; */
+  & textarea {
+    width: 100%;
+    height: 164px;
+    font-size: 18px;
+    resize: none;
+    padding: 10px;
+  }
+  & .new-comment {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  & .comments {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+`;
