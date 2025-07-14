@@ -4,3 +4,7 @@ export * from './selectUserSession';
 // export * from './selectRoles';
 // export * from './selectUsers';
 export * from './selectPost';
+export * from './selectModalIsOpen';
+export * from './selectModalOnClose';
+export * from './selectModalOnOpen';
+export * from './selectModalText';

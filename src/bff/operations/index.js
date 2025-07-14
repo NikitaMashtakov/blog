@@ -9,3 +9,4 @@ export * from './removeUser';
 export * from './fetchPost';
 export * from './fetchComments';
 export * from './addPostComment';
+export * from './removeComment';

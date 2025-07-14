@@ -6,3 +6,4 @@ export * from './setPostData';
 export * from './setPostComments';
 export * from './loadCommentsAsync';
 export * from './addCommentAsync';
+export * from './deleteCommentAsync';

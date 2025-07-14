@@ -8,3 +8,4 @@ export * from './getPost';
 export * from './addSession';
 export * from './getSession';
 export * from './deleteSession';
+export * from './deleteComment';

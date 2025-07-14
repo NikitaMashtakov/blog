@@ -7,12 +7,15 @@ import { useServerRequest } from 'hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCommentAsync } from 'actions/addCommentAsync';
 import { selectUserId } from 'selectors/selectUserId';
+import { selectUserRole } from 'selectors';
+import { ROLE } from 'constants';
 
 const CommentsContainer = ({ className, comments, postId }) => {
   const [text, setText] = useState('');
   const requestServer = useServerRequest();
   const dispatch = useDispatch();
   const userId = useSelector(selectUserId);
+  const userRole = useSelector(selectUserRole);
 
   const onCreateComment = (authorId, postId, content) => {
     dispatch(addCommentAsync(requestServer, authorId, postId, content));
@@ -21,27 +24,33 @@ const CommentsContainer = ({ className, comments, postId }) => {
 
   return (
     <div className={className}>
-      <div className="new-comment">
-        <textarea
-          name="new"
-          id="new-comment"
-          placeholder="Комментарий"
-          value={text}
-          onChange={({ target }) => setText(target.value)}
-        />
-        <Icon
-          id="fa-paper-plane-o"
-          onClick={() => onCreateComment(userId, postId, text)}
-        />
-      </div>
+      {userRole !== ROLE.GUEST && (
+        <div className="new-comment">
+          <textarea
+            name="new"
+            id="new-comment"
+            placeholder="Комментарий"
+            value={text}
+            onChange={({ target }) => setText(target.value)}
+          />
+          <Icon
+            id="fa-paper-plane-o"
+            onClick={() => onCreateComment(userId, postId, text)}
+          />
+        </div>
+      )}
       <div className="comments">
-        {comments.map(({ id, authorId, content, publishedAt }) => (
+        {comments.map(({ id, authorId, content, publishedAt, authorLogin, postId }) => (
           <Comment
             key={id}
             id={id}
             authorId={authorId}
+            postId={postId}
             content={content}
             publishedAt={publishedAt}
+            authorLogin={authorLogin}
+            readerRole={userRole}
+            readerId={userId}
           />
         ))}
       </div>

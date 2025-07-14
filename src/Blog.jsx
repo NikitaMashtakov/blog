@@ -4,6 +4,7 @@ import { Header, Footer } from './components';
 import { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from 'actions';
+import { Modal } from 'components/Modal/Modal';
 
 const AppColumn = styled.div`
   display: flex;
@@ -34,6 +35,7 @@ function Blog() {
       <Content>
         <Outlet />
       </Content>
+      <Modal />
       <Footer />
     </AppColumn>
   );

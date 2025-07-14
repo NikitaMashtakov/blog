@@ -1,10 +1,13 @@
 import { Icon } from 'components';
+import { ROLE } from 'constants';
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { selectUserRole } from 'selectors';
 import styled from 'styled-components';
 
 const PostContentContainer = ({ post, className }) => {
   const { id, title, imageUrl, content, publishedAt } = post;
-
+  const userRole = useSelector(selectUserRole);
   return (
     <div className={className}>
       {imageUrl && <img src={imageUrl} alt={title} />}
@@ -14,10 +17,12 @@ const PostContentContainer = ({ post, className }) => {
           <Icon id="fa-calendar-o" size="18px" />
           {publishedAt}
         </div>
-        <div className="tools">
-          <Icon id="fa-pencil-square-o" onClick={() => {}} />
-          <Icon id="fa-trash-o" onClick={() => {}} />
-        </div>
+        {(userRole === ROLE.ADMIN || userRole === ROLE.MODERATOR) && (
+          <div className="tools">
+            <Icon id="fa-pencil-square-o" onClick={() => {}} />
+            <Icon id="fa-trash-o" onClick={() => {}} />
+          </div>
+        )}
       </div>
       <div className="post-content">{content}</div>
     </div>
