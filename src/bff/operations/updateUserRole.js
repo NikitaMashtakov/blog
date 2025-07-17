@@ -5,7 +5,8 @@ import { setUserRole } from '../api';
 export const updateUserRole = async (hash, userId, newRoleId) => {
   const accessRoles = [ROLE.ADMIN];
 
-  if (!sessions.access(hash, accessRoles)) {
+  const access = await sessions.access(hash, accessRoles);
+  if (!access) {
     return {
       error: 'Access denied',
       res: null,

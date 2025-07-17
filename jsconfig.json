@@ -2,36 +2,16 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "components/*": [
-        "./src/components"
-      ],
-      "constants/*": [
-        "./src/constants"
-      ],
-      "hooks/*": [
-        "./src/hooks"
-      ],
-      "pages/*": [
-        "./src/pages"
-      ],
-      "utils/*": [
-        "./src/utils"
-      ],
-      "contexts/*": [
-        "src/contexts"
-      ],
-      "reducers/*": [
-        "src/reducers"
-      ],
-      "bff/*": [
-        "src/bff"
-      ],
-      "actions/*": [
-        "src/actions"
-      ],
-      "selectors/*": [
-        "src/selectors"
-      ]
+      "components/*": ["./src/components"],
+      "constants/*": ["./src/constants"],
+      "hooks/*": ["./src/hooks"],
+      "pages/*": ["./src/pages"],
+      "utils/*": ["./src/utils"],
+      "contexts/*": ["./src/contexts"],
+      "reducers/*": ["./src/reducers"],
+      "bff/*": ["./src/bff"],
+      "actions/*": ["./src/actions"],
+      "selectors/*": ["./src/selectors"]
     }
   }
 }

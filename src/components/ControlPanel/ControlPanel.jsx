@@ -4,9 +4,8 @@ import { Link, useNavigate } from 'react-router';
 import { Button } from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { ROLE } from '../../constants/role';
-import { selectUserLogin, selectUserRole } from '../../selectors';
-import { logout } from '../../actions';
-import { selectUserSession } from '../../selectors/selectUserSession';
+import { selectUserLogin, selectUserRole, selectUserHash } from 'selectors';
+import { logout } from 'actions';
 
 const PanelRow = styled.div`
   display: flex;
@@ -31,7 +30,7 @@ const ControlPanelContainer = ({ className }) => {
   const navigate = useNavigate();
   const roleId = useSelector(selectUserRole);
   const login = useSelector(selectUserLogin);
-  const session = useSelector(selectUserSession);
+  const hash = useSelector(selectUserHash);
   const dispatch = useDispatch();
 
   return (
@@ -48,7 +47,7 @@ const ControlPanelContainer = ({ className }) => {
             <Icon
               id="fa-sign-out"
               onClick={() => {
-                dispatch(logout(session));
+                dispatch(logout(hash));
               }}
             />
           </>

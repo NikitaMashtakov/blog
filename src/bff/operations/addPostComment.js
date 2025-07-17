@@ -5,8 +5,12 @@ import { fetchComments } from './fetchComments';
 
 export const addPostComment = async (hash, authorId, postId, content) => {
   const accessRoles = [ROLE.ADMIN, ROLE.MODERATOR, ROLE.READER];
+  console.log('access', hash);
 
-  if (!sessions.access(hash, accessRoles)) {
+  const access = await sessions.access(hash, accessRoles);
+
+  console.log('access', access);
+  if (!access) {
     return {
       error: 'Access denied',
       res: null,

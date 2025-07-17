@@ -128,13 +128,6 @@
       "published_at": "2023-10-15"
     },
     {
-      "id": "3",
-      "author_id": "bwSyC9P",
-      "post_id": "1",
-      "content": "Хочу туда!",
-      "published_at": "2023-10-15"
-    },
-    {
       "id": "4",
       "author_id": "bwSyC9P",
       "post_id": "2",
@@ -322,62 +315,23 @@
       "post_id": "10",
       "content": "Вдохновило!",
       "published_at": "2023-10-15"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fdsfs",
-      "published_at": "2025-07-10 10:09",
-      "id": "JdDEnyj"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fdasd",
-      "published_at": "2025-07-10 10:13",
-      "id": "LCtqm8Y"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fdasd",
-      "published_at": "2025-07-10 10:14",
-      "id": "PBJ-XCW"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fsafaf",
-      "published_at": "2025-07-10 10:14",
-      "id": "J41XGjp"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "fsafaffsafafsafa",
-      "published_at": "2025-07-10 10:14",
-      "id": "MsHRM-s"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "feefsefs",
-      "published_at": "2025-07-10 10:15",
-      "id": "AcHMETg"
-    },
-    {
-      "author_id": "001",
-      "post_id": "1",
-      "content": "dweqw",
-      "published_at": "2025-07-12 12:26",
-      "id": "3dbZfGd"
     }
   ],
   "sessions": [
     {
-      "hash": "0.03884103703739349988666162971640005707740783691406",
+      "hash": "0.33498963674639503640406701379106380045413970947266",
       "user_id": "001",
       "id": 1
+    },
+    {
+      "hash": "0.51150864976628462876817593496525660157203674316406",
+      "user_id": "001",
+      "id": 2
+    },
+    {
+      "hash": "0.24677538275158750202820101549150422215461730957031",
+      "user_id": "001",
+      "id": 3
     }
   ]
 }

@@ -7,3 +7,5 @@ export * from './setPostComments';
 export * from './loadCommentsAsync';
 export * from './addCommentAsync';
 export * from './deleteCommentAsync';
+export * from './openModal';
+export * from './closeModal';

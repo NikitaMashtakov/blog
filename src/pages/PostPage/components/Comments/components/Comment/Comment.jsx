@@ -1,4 +1,4 @@
-import { deleteCommentAsync } from 'actions/deleteCommentAsync';
+import { closeModal, deleteCommentAsync, openModal } from 'actions';
 import { Icon } from 'components';
 import { ROLE } from 'constants';
 import { useServerRequest } from 'hooks';
@@ -7,20 +7,31 @@ import styled from 'styled-components';
 
 const CommentContainer = ({
   id,
-  authorId,
   postId,
   content,
   publishedAt,
   authorLogin,
-  readerRole,
-  readerId,
+  userRole,
   className,
 }) => {
   const requestServer = useServerRequest();
   const dispatch = useDispatch();
+
   const onDeleteComment = (commentId) => {
-    dispatch(deleteCommentAsync(requestServer, commentId, postId));
+    console.log(commentId);
+    dispatch(
+      openModal({
+        text: 'Delete comment?',
+        onConfirm: () => {
+          dispatch(deleteCommentAsync(requestServer, commentId, postId));
+          console.log('confirm');
+          dispatch(closeModal);
+        },
+        onClose: () => dispatch(closeModal),
+      }),
+    );
   };
+
   return (
     <div className={className}>
       <div className="comment-body">
@@ -36,16 +47,9 @@ const CommentContainer = ({
         </div>
         <div className="comment-content">{content}</div>
       </div>
-      <Icon
-        id="fa-trash-o"
-        visible={
-          readerRole === ROLE.ADMIN ||
-          readerRole === ROLE.MODERATOR ||
-          readerId === authorId
-        }
-        onClick={() => onDeleteComment(id)}
-        margin="0 0 0 5px"
-      />
+      {userRole === ROLE.ADMIN || userRole === ROLE.MODERATOR ? (
+        <Icon id="fa-trash-o" onClick={() => onDeleteComment(id)} margin="0 0 0 5px" />
+      ) : null}
     </div>
   );
 };

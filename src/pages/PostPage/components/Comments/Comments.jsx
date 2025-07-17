@@ -5,9 +5,8 @@ import { Icon } from 'components';
 import { useParams } from 'react-router';
 import { useServerRequest } from 'hooks';
 import { useDispatch, useSelector } from 'react-redux';
-import { addCommentAsync } from 'actions/addCommentAsync';
-import { selectUserId } from 'selectors/selectUserId';
-import { selectUserRole } from 'selectors';
+import { addCommentAsync } from 'actions';
+import { selectUserRole, selectUserId } from 'selectors';
 import { ROLE } from 'constants';
 
 const CommentsContainer = ({ className, comments, postId }) => {
@@ -40,17 +39,15 @@ const CommentsContainer = ({ className, comments, postId }) => {
         </div>
       )}
       <div className="comments">
-        {comments.map(({ id, authorId, content, publishedAt, authorLogin, postId }) => (
+        {comments.map(({ id, content, publishedAt, authorLogin, postId }) => (
           <Comment
             key={id}
             id={id}
-            authorId={authorId}
             postId={postId}
             content={content}
             publishedAt={publishedAt}
             authorLogin={authorLogin}
-            readerRole={userRole}
-            readerId={userId}
+            userRole={userRole}
           />
         ))}
       </div>
