@@ -16,6 +16,6 @@ export const Icon = styled(IconContainer)`
     margin: auto;
   }
   cursor: pointer;
-  visibility: ${({ visible = true }) => `${visible ? 'visible' : 'hidden'}`};
+  visibility: ${({ disable = false }) => `${!disable ? 'visible' : 'hidden'}`};
   margin: ${({ margin = 'inherit' }) => margin};
 `;

@@ -1,4 +1,4 @@
-export const addSession = (hash, userId) => {
+export const addSession = (hash, userId, userLogin) => {
   return fetch('http://localhost:3000/sessions', {
     method: 'POST',
     headers: {
@@ -7,6 +7,7 @@ export const addSession = (hash, userId) => {
     body: JSON.stringify({
       hash,
       user_id: userId,
+      user_login: userLogin,
     }),
   });
 };

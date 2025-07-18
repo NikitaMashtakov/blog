@@ -3,7 +3,7 @@ import { addSession, deleteSession, getSession, getUser } from './api';
 export const sessions = {
   create(user) {
     const hash = Math.random().toFixed(50);
-    addSession(hash, user.id);
+    addSession(hash, user.id, user.login);
     return hash;
   },
   async remove(hash) {
@@ -15,8 +15,8 @@ export const sessions = {
   },
   async access(hash, accessRoles) {
     const session = await getSession(hash);
-
-    const user = await getUser(session.userId);
+    console.log('session in access', session);
+    const user = await getUser(session.userLogin);
 
     return !!user && accessRoles.includes(user.roleId);
   },
