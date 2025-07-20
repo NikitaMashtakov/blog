@@ -2,28 +2,33 @@ import { Icon } from 'components';
 import { ROLE } from 'constants';
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { Link, useLocation, useNavigate } from 'react-router';
 import { selectUserRole } from 'selectors';
 import styled from 'styled-components';
+import { ToolsPanel } from '../ToolsPanel/ToolsPanel';
 
 const PostContentContainer = ({ post, className }) => {
   const { id, title, imageUrl, content, publishedAt } = post;
   const userRole = useSelector(selectUserRole);
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const onEdit = () => {
+    navigate(`${location.pathname}/edit`);
+  };
+
   return (
     <div className={className}>
       {imageUrl && <img src={imageUrl} alt={title} />}
       <h2 className="post-title">{title}</h2>
-      <div className="panel">
-        <div className="publish-date">
-          <Icon id="fa-calendar-o" size="18px" />
-          {publishedAt}
-        </div>
-        {(userRole === ROLE.ADMIN || userRole === ROLE.MODERATOR) && (
-          <div className="tools">
-            <Icon id="fa-pencil-square-o" onClick={() => {}} />
-            <Icon id="fa-trash-o" onClick={() => {}} />
-          </div>
-        )}
-      </div>
+
+      <ToolsPanel
+        postId={id}
+        publishedAt={publishedAt}
+        functionButtonId={'fa-pencil-square-o'}
+        functionButtonOnClick={onEdit}
+      />
+
       <div className="post-content">{content}</div>
     </div>
   );
@@ -50,6 +55,6 @@ export const PostContent = styled(PostContentContainer)`
   }
   & .post-content {
     text-align: justify;
-    /* text-indent: 12px; */
+    white-space: pre-line;
   }
 `;

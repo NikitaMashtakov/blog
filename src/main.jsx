@@ -17,8 +17,9 @@ createRoot(document.getElementById('root')).render(
           <Route path="login" element={<AuthPage />} />
           <Route path="register" element={<RegistrationPage />} />
           <Route path="users" element={<UsersPage />} />
-          <Route path="post" element={<div>New Post</div>} />
+          <Route path="post" element={<PostPage />} />
           <Route path="post/:id" element={<PostPage />} />
+          <Route path="post/:id/edit" element={<PostPage />} />
           <Route path="*" element={<div>Error</div>} />
         </Route>
       </Routes>

@@ -15,7 +15,6 @@ export const sessions = {
   },
   async access(hash, accessRoles) {
     const session = await getSession(hash);
-    console.log('session in access', session);
     const user = await getUser(session.userLogin);
 
     return !!user && accessRoles.includes(user.roleId);

@@ -14,6 +14,7 @@ const PanelRow = styled.div`
   gap: 24px;
   justify-content: end;
   width: 100%;
+  height: 32px;
 `;
 
 const StyledLink = styled(Link)`
@@ -52,8 +53,8 @@ const ControlPanelContainer = ({ className }) => {
             />
           </>
         )}
-        {/*  */}
       </PanelRow>
+
       <PanelRow>
         <Icon
           id="fa-backward"
@@ -61,12 +62,17 @@ const ControlPanelContainer = ({ className }) => {
             navigate(-1);
           }}
         />
-        <Link to={'post'}>
-          <Icon id="fa-file-text-o" />
-        </Link>
-        <Link to={'users'}>
-          <Icon id="fa-users" />
-        </Link>
+        {roleId === ROLE.ADMIN ? (
+          <>
+            <Link to={'post'}>
+              <Icon id="fa-file-text-o" />
+            </Link>
+
+            <Link to={'users'}>
+              <Icon id="fa-users" />
+            </Link>
+          </>
+        ) : null}
       </PanelRow>
     </div>
   );

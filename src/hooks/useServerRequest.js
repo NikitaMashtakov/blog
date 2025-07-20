@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 
 export const useServerRequest = () => {
   const hash = useSelector(selectUserHash);
-  console.log('hook', hash);
+
   return useCallback(
     (operation, ...params) => {
       const request = ['register', 'authorize', 'fetchPost', 'fetchComments'].includes(

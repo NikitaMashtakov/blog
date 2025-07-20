@@ -18,13 +18,12 @@ const CommentContainer = ({
   const dispatch = useDispatch();
 
   const onDeleteComment = (commentId) => {
-    console.log(commentId);
     dispatch(
       openModal({
         text: 'Delete comment?',
         onConfirm: () => {
           dispatch(deleteCommentAsync(requestServer, commentId, postId));
-          console.log('confirm');
+
           dispatch(closeModal);
         },
         onClose: () => dispatch(closeModal),
@@ -37,11 +36,11 @@ const CommentContainer = ({
       <div className="comment-body">
         <div className="comment-header">
           <div className="author">
-            <Icon id="fa-user-circle-o" size="18px" />
+            <Icon id="fa-user-circle-o" size="18px" isClickable={false} />
             {authorLogin}
           </div>
           <div className="publish-date">
-            <Icon id="fa-calendar-o" size="18px" />
+            <Icon id="fa-calendar-o" size="18px" isClickable={false} />
             {publishedAt}
           </div>
         </div>
@@ -78,7 +77,7 @@ export const Comment = styled(CommentContainer)`
   }
   & .comment-body {
     border: solid 1px black;
-    width: 100%;
+    width: 94%;
     padding: 10px;
   }
 `;

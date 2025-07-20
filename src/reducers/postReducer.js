@@ -1,6 +1,6 @@
 import { ACTION_TYPE } from '../actions';
 
-const initialPostState = {
+export const initialPostState = {
   id: '',
   title: '',
   imageUrl: '',
@@ -18,6 +18,8 @@ export const postReducer = (state = initialPostState, action) => {
       return { ...state, comments: [...payload] };
     case ACTION_TYPE.ADD_NEW_COMMENT:
       return { ...state, comments: [...state.comments, payload] };
+    case ACTION_TYPE.RESET_POST_DATA:
+      return initialPostState;
     default:
       return state;
   }
