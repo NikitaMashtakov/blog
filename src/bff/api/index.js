@@ -10,3 +10,4 @@ export * from './getSession';
 export * from './deleteSession';
 export * from './deleteComment';
 export * from './updatePost';
+export * from './getPosts';

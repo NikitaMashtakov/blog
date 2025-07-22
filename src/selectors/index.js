@@ -9,3 +9,4 @@ export * from './selectModalIsOpen';
 export * from './selectModalOnClose';
 export * from './selectModalOnConfirm';
 export * from './selectModalText';
+export * from './selectPosts';

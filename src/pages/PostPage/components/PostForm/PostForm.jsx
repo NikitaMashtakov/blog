@@ -40,10 +40,10 @@ const PostFormContainer = ({ post = initialPostState, isCreating, className }) =
 
   return (
     <div className={className}>
-      <label>Ссылка на изображение:</label>
-      <Input ref={imageRef} name="image-url" defaultValue={imageUrl} />
-      <label>Заголовок поста:</label>
-      <Input ref={titleRef} name="post-title" defaultValue={title} />
+      <label htmlFor="image-url">Ссылка на изображение:</label>
+      <Input ref={imageRef} id="image-url" defaultValue={imageUrl} />
+      <label htmlFor="post-title">Заголовок поста:</label>
+      <Input ref={titleRef} id="post-title" defaultValue={title} />
 
       {!isCreating ? (
         <ToolsPanel

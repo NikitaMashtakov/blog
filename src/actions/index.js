@@ -9,3 +9,5 @@ export * from './addCommentAsync';
 export * from './deleteCommentAsync';
 export * from './openModal';
 export * from './closeModal';
+export * from './loadPostsAsync';
+export * from './setPostsData';

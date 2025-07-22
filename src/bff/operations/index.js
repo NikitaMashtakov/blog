@@ -13,3 +13,4 @@ export * from './removeComment';
 export * from './editPost';
 export * from './removePost';
 export * from './addPost';
+export * from './fetchPosts';
