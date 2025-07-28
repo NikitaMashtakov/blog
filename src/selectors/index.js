@@ -10,3 +10,4 @@ export * from './selectModalOnClose';
 export * from './selectModalOnConfirm';
 export * from './selectModalText';
 export * from './selectPosts';
+export * from './selectTotalCount';

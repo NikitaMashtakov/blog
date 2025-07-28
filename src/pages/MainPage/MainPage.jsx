@@ -2,16 +2,21 @@ import { loadPostsAsync } from 'actions';
 import { useServerRequest } from 'hooks';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPosts } from 'selectors';
+import { selectPosts, selectTotalCount } from 'selectors';
 import styled from 'styled-components';
 import { PostCard } from './components/PostCard/PostCard';
+import { Pagination } from './components/Pagination/Pagination';
 
 const MainPageContainer = ({ className }) => {
   const dispatch = useDispatch();
   const requestServer = useServerRequest();
   const posts = useSelector(selectPosts);
+  const page = '2';
+  const limit = '5';
+  const search = ' ';
+  const lastPage = Math.ceil(useSelector(selectTotalCount) / limit);
   useEffect(() => {
-    dispatch(loadPostsAsync(requestServer));
+    dispatch(loadPostsAsync(requestServer, page, limit, search));
   }, [dispatch, requestServer]);
   return (
     <div className={className}>
@@ -26,6 +31,7 @@ const MainPageContainer = ({ className }) => {
             commentsCount={commentsCount}
           />
         ))}
+        <Pagination lastPage={lastPage} />
       </div>
     </div>
   );
@@ -37,5 +43,6 @@ export const MainPage = styled(MainPageContainer)`
     gap: 20px;
     grid-template-columns: repeat(3, 1fr);
     justify-items: center;
+    padding: 30px;
   }
 `;
