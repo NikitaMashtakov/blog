@@ -1,6 +1,6 @@
 import { loadPostsAsync } from 'actions';
 import { useServerRequest } from 'hooks';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPosts, selectTotalCount } from 'selectors';
 import styled from 'styled-components';
@@ -11,13 +11,16 @@ const MainPageContainer = ({ className }) => {
   const dispatch = useDispatch();
   const requestServer = useServerRequest();
   const posts = useSelector(selectPosts);
-  const page = '2';
+  const [page, setPage] = useState(1);
   const limit = '5';
   const search = ' ';
   const lastPage = Math.ceil(useSelector(selectTotalCount) / limit);
+  const changePage = (pageNum) => {
+    setPage(pageNum);
+  };
   useEffect(() => {
-    dispatch(loadPostsAsync(requestServer, page, limit, search));
-  }, [dispatch, requestServer]);
+    dispatch(loadPostsAsync(requestServer, String(page), limit, search));
+  }, [dispatch, page, requestServer]);
   return (
     <div className={className}>
       <div className="post-list">
@@ -31,8 +34,8 @@ const MainPageContainer = ({ className }) => {
             commentsCount={commentsCount}
           />
         ))}
-        <Pagination lastPage={lastPage} />
       </div>
+      <Pagination changePage={changePage} page={page} lastPage={lastPage} />
     </div>
   );
 };
