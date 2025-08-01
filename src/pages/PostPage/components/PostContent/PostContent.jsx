@@ -27,6 +27,7 @@ const PostContentContainer = ({ post, className }) => {
         publishedAt={publishedAt}
         functionButtonId={'fa-pencil-square-o'}
         functionButtonOnClick={onEdit}
+        userRole={userRole}
       />
 
       <div className="post-content">{content}</div>

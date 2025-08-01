@@ -1,6 +1,7 @@
 import { closeModal, openModal } from 'actions';
 import { deletePostAsync } from 'actions/deletePostAsync';
 import { Icon } from 'components';
+import { ROLE } from 'constants';
 import { useServerRequest } from 'hooks';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -12,6 +13,7 @@ const ToolsPanelContainer = ({
   publishedAt,
   functionButtonId,
   functionButtonOnClick,
+  userRole,
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -38,11 +40,12 @@ const ToolsPanelContainer = ({
         <Icon id="fa-calendar-o" size="18px" isClickable={false} />
         {publishedAt}
       </div>
-
-      <div className="tools">
-        <Icon id={functionButtonId} onClick={functionButtonOnClick} />
-        <Icon id="fa-trash-o" onClick={() => onDeletePost(postId)} />
-      </div>
+      {userRole === ROLE.ADMIN ? (
+        <div className="tools">
+          <Icon id={functionButtonId} onClick={functionButtonOnClick} />
+          <Icon id="fa-trash-o" onClick={() => onDeletePost(postId)} />
+        </div>
+      ) : null}
     </div>
   );
 };

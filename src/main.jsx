@@ -6,6 +6,8 @@ import { MainPage, AuthPage, RegistrationPage, UsersPage, PostPage } from './pag
 import { BrowserRouter, Route, Routes } from 'react-router';
 import { Provider } from 'react-redux';
 import { store } from './store.js';
+import ProtectedRoute from 'pages/ProtectedRoute/ProtectedRoute';
+import { ROLE } from 'constants';
 
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
@@ -16,8 +18,22 @@ createRoot(document.getElementById('root')).render(
           <Route index element={<MainPage />} />
           <Route path="login" element={<AuthPage />} />
           <Route path="register" element={<RegistrationPage />} />
-          <Route path="users" element={<UsersPage />} />
-          <Route path="post" element={<PostPage />} />
+          <Route
+            path="users"
+            element={
+              <ProtectedRoute roles={[ROLE.ADMIN]}>
+                <UsersPage />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="post"
+            element={
+              <ProtectedRoute roles={[ROLE.ADMIN]}>
+                <PostPage />
+              </ProtectedRoute>
+            }
+          />
           <Route path="post/:id" element={<PostPage />} />
           <Route path="post/:id/edit" element={<PostPage />} />
           <Route path="*" element={<div>Error</div>} />

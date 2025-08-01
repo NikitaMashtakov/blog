@@ -14,8 +14,10 @@ const PostCardContainer = ({
   return (
     <Link to={`/post/${id}`}>
       <div className={className}>
-        <img src={imageUrl} />
-        <h3 className="post-title">{title}</h3>
+        <div className="post-header">
+          <img src={imageUrl} />
+          <h3 className="post-title">{title}</h3>
+        </div>
         <div className="post-info">
           <div className="info-field">
             <Icon id="fa-calendar-o" size="18px" isClickable={false} />
@@ -35,9 +37,15 @@ export const PostCard = styled(PostCardContainer)`
   width: 280px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 5px;
   border: 1px solid black;
-
+  height: 100%;
+  & .post-header {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
   & .post-title {
     text-align: left;
     padding: 0 10px;
