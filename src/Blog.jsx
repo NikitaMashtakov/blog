@@ -11,13 +11,14 @@ const AppColumn = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 1000px;
-  min-height: 100%;
+  height: 100%;
   background-color: #fff;
   margin: 0 auto;
 `;
 
 const Content = styled.div`
   padding: 120px 0;
+  height: 100%;
 `;
 
 function Blog() {

@@ -41,9 +41,9 @@ export const PostCard = styled(PostCardContainer)`
   & .post-title {
     text-align: left;
     padding: 0 10px;
-    overflow: hidden;
+    /* overflow: hidden;
     white-space: nowrap;
-    text-overflow: ellipsis;
+    text-overflow: ellipsis; */
   }
 
   & .post-info {

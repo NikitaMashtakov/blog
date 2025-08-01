@@ -12,7 +12,7 @@ const MainPageContainer = ({ className }) => {
   const requestServer = useServerRequest();
   const posts = useSelector(selectPosts);
   const [page, setPage] = useState(1);
-  const limit = '5';
+  const limit = '6';
   const search = ' ';
   const lastPage = Math.ceil(useSelector(selectTotalCount) / limit);
   const changePage = (pageNum) => {
@@ -41,10 +41,15 @@ const MainPageContainer = ({ className }) => {
 };
 
 export const MainPage = styled(MainPageContainer)`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   & .post-list {
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
     justify-items: center;
     padding: 30px;
   }
