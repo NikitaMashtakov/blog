@@ -1,5 +1,5 @@
 import { Button } from 'components';
-import React from 'react';
+import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import {
   selectModalIsOpen,
@@ -66,3 +66,7 @@ export const Modal = styled(ModalContainer)`
     gap: 20px;
   }
 `;
+
+ModalContainer.propTypes = {
+  className: PropTypes.string,
+};

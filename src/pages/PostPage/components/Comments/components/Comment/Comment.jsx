@@ -1,7 +1,9 @@
 import { closeModal, deleteCommentAsync, openModal } from 'actions';
 import { Icon } from 'components';
 import { ROLE } from 'constants';
+import { PROP_TYPE } from 'constants';
 import { useServerRequest } from 'hooks';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 
@@ -81,3 +83,13 @@ export const Comment = styled(CommentContainer)`
     padding: 10px;
   }
 `;
+
+CommentContainer.propTypes = {
+  id: PropTypes.string.isRequired,
+  postId: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  authorLogin: PropTypes.string.isRequired,
+  userRole: PROP_TYPE.ROLE.isRequired,
+  className: PropTypes.string,
+};

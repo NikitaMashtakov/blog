@@ -1,5 +1,5 @@
 import { Icon } from 'components';
-import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router';
 import styled from 'styled-components';
 
@@ -49,9 +49,6 @@ export const PostCard = styled(PostCardContainer)`
   & .post-title {
     text-align: left;
     padding: 0 10px;
-    /* overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis; */
   }
 
   & .post-info {
@@ -66,3 +63,12 @@ export const PostCard = styled(PostCardContainer)`
     gap: 5px;
   }
 `;
+
+PostCardContainer.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  commentsCount: PropTypes.number.isRequired,
+};

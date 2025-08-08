@@ -1,8 +1,10 @@
 import { closeModal, openModal } from 'actions';
 import { deletePostAsync } from 'actions/deletePostAsync';
 import { Icon } from 'components';
+import { PROP_TYPE } from 'constants';
 import { ROLE } from 'constants';
 import { useServerRequest } from 'hooks';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import styled from 'styled-components';
@@ -64,3 +66,12 @@ export const ToolsPanel = styled(ToolsPanelContainer)`
     font-size: 18px;
   }
 `;
+
+ToolsPanelContainer.propTypes = {
+  className: PropTypes.string,
+  postId: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  functionButtonId: PropTypes.string.isRequired,
+  functionButtonOnClick: PropTypes.func.isRequired,
+  userRole: PROP_TYPE.ROLE.isRequired,
+};

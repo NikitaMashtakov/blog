@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ROLE } from '../../constants/role';
 import { selectUserLogin, selectUserRole, selectUserHash } from 'selectors';
 import { logout } from 'actions';
+import PropTypes from 'prop-types';
 
 const PanelRow = styled.div`
   display: flex;
@@ -39,7 +40,7 @@ const ControlPanelContainer = ({ className }) => {
       <PanelRow>
         {roleId === ROLE.GUEST ? (
           <StyledLink to={'login'}>
-            <Button>Войти</Button>
+            <Button width="100px">Войти</Button>
           </StyledLink>
         ) : (
           <>
@@ -83,3 +84,7 @@ export const ControlPanel = styled(ControlPanelContainer)`
   flex-direction: column;
   gap: 10px;
 `;
+
+ControlPanelContainer.propTypes = {
+  className: PropTypes.string,
+};

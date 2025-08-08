@@ -1,11 +1,10 @@
-import { Icon } from 'components';
-import { ROLE } from 'constants';
-import React from 'react';
 import { useSelector } from 'react-redux';
-import { Link, useLocation, useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { selectUserRole } from 'selectors';
 import styled from 'styled-components';
 import { ToolsPanel } from '../ToolsPanel/ToolsPanel';
+import { PROP_TYPE } from 'constants';
+import PropTypes from 'prop-types';
 
 const PostContentContainer = ({ post, className }) => {
   const { id, title, imageUrl, content, publishedAt } = post;
@@ -59,3 +58,8 @@ export const PostContent = styled(PostContentContainer)`
     white-space: pre-line;
   }
 `;
+
+PostContentContainer.propTypes = {
+  post: PROP_TYPE.POST.isRequired,
+  className: PropTypes.string,
+};

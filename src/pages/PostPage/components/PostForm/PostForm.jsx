@@ -9,6 +9,8 @@ import { useServerRequest } from 'hooks';
 import { ToolsPanel } from '../ToolsPanel/ToolsPanel';
 import { initialPostState } from 'reducers';
 import { addPostAsync } from 'actions/addPostAsync';
+import { PROP_TYPE } from 'constants';
+import PropTypes from 'prop-types';
 
 const PostFormContainer = ({ post = initialPostState, isCreating, className }) => {
   const { id, title, imageUrl, content, publishedAt } = post;
@@ -97,3 +99,9 @@ export const PostForm = styled(PostFormContainer)`
     padding: 20px;
   }
 `;
+
+PostFormContainer.propTypes = {
+  post: PROP_TYPE.POST,
+  isCreating: PropTypes.bool.isRequired,
+  className: PropTypes.string,
+};

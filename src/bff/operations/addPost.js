@@ -15,7 +15,6 @@ export const addPost = async (hash, newPostData) => {
   }
 
   const post = await createPost(newPostData);
-  console.log('addPost', post);
   return {
     error: null,
     res: post,

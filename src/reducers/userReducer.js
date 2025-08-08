@@ -18,7 +18,9 @@ export const userReducer = (state = initialUserState, action) => {
     case ACTION_TYPE.LOGOUT: {
       return initialUserState;
     }
-    default:
-      return state;
+    default: {
+      const userState = JSON.parse(sessionStorage.getItem('user'));
+      return userState ?? state;
+    }
   }
 };

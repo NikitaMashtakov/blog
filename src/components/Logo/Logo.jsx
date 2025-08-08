@@ -1,19 +1,7 @@
 import styled from 'styled-components';
 import { Icon } from '../../components';
 import { Link } from 'react-router';
-// const IconContainer = ({ className }) => {
-//   return (
-//     <div className={className}>
-//       <i className="fa fa-code" aria-hidden="true" />
-//     </div>
-//   );
-// };
-
-// const Icon = styled(IconContainer)`
-//   font-size: 70px;
-//   display: flex;
-//   align-items: center;
-// `;
+import PropTypes from 'prop-types';
 
 const LargeText = styled.div`
   font-size: 48px;
@@ -48,3 +36,7 @@ const LogoContainer = ({ className }) => {
 export const Logo = styled(LogoContainer)`
   display: flex;
 `;
+
+LogoContainer.propTypes = {
+  className: PropTypes.string,
+};

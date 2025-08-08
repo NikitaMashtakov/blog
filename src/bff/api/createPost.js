@@ -16,7 +16,6 @@ export const createPost = async (newPostData) => {
   })
     .then((createdPost) => createdPost.json())
     .then((post) => {
-      console.log('createPost', transformPost(post));
       return post && transformPost(post);
     });
 };

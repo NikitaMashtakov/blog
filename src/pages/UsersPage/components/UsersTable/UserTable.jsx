@@ -1,6 +1,8 @@
 import { TableHeader } from './TableHeader/TableHeader';
 import styled from 'styled-components';
 import { UserRow } from './UserRow/UserRow';
+import PropTypes from 'prop-types';
+import { PROP_TYPE } from 'constants';
 
 const UserTableContainer = ({ users, roles, onDeleteUser, className }) => {
   return (
@@ -51,3 +53,10 @@ export const UsersTable = styled(UserTableContainer)`
     border-bottom: 1px solid #ddd;
   }
 `;
+
+UserTableContainer.propTypes = {
+  users: PropTypes.arrayOf(PROP_TYPE.USER).isRequired,
+  roles: PROP_TYPE.ROLES.isRequired,
+  onDeleteUser: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};

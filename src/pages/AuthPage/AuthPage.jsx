@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate } from 'react-router';
-import { server } from 'bff';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from 'actions';
 import { selectUserRole } from 'selectors';
@@ -12,6 +9,8 @@ import { ROLE } from 'constants';
 import { Button, FormError, Input, H2 } from 'components';
 import styled from 'styled-components';
 import { useServerRequest } from 'hooks';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const StyledLink = styled(Link)`
   text-align: center;
@@ -96,8 +95,6 @@ const AuthPageContainer = ({ className }) => {
   );
 };
 
-AuthPageContainer.propTypes = {};
-
 export const AuthPage = styled(AuthPageContainer)`
   display: flex;
   flex-direction: column;
@@ -113,3 +110,7 @@ export const AuthPage = styled(AuthPageContainer)`
     width: 260px;
   }
 `;
+
+AuthPageContainer.propTypes = {
+  className: PropTypes.string,
+};

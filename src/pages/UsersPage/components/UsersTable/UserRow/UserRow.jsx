@@ -1,6 +1,8 @@
-import { Icon, Loader } from './../../../../../components';
+import { Icon, Loader } from 'components';
 import { useState } from 'react';
-import { useServerRequest } from './../../../../../hooks';
+import { useServerRequest } from 'hooks';
+import PropTypes from 'prop-types';
+import { PROP_TYPE } from 'constants';
 
 export const UserRow = ({ id, login, registeredAt, roleId, roles, onDeleteUser }) => {
   const requestServer = useServerRequest();
@@ -61,4 +63,13 @@ export const UserRow = ({ id, login, registeredAt, roleId, roles, onDeleteUser }
       </td>
     </tr>
   );
+};
+
+UserRow.propTypes = {
+  id: PropTypes.string.isRequired,
+  login: PropTypes.string.isRequired,
+  registeredAt: PropTypes.string.isRequired,
+  roleId: PROP_TYPE.ROLE.isRequired,
+  roles: PROP_TYPE.ROLES.isRequired,
+  onDeleteUser: PropTypes.func.isRequired,
 };

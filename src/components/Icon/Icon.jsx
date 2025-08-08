@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const IconContainer = ({ className, id, onClick }) => {
@@ -19,3 +20,9 @@ export const Icon = styled(IconContainer)`
   visibility: ${({ visible = true }) => `${visible ? 'visible' : 'hidden'}`};
   margin: ${({ margin = 'inherit' }) => margin};
 `;
+
+IconContainer.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
+};

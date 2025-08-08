@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getWeather } from '../../utils/getWeather';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const FooterContainer = ({ className }) => {
   const [weather, setWeather] = useState({
@@ -50,3 +51,7 @@ export const Footer = styled(FooterContainer)`
   background-color: #fff;
   font-weight: bold;
 `;
+
+FooterContainer.propTypes = {
+  className: PropTypes.string,
+};

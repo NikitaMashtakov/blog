@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { Comment } from './components/Comment/Comment';
 import { Icon } from 'components';
-import { useParams } from 'react-router';
 import { useServerRequest } from 'hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { addCommentAsync } from 'actions';
 import { selectUserRole, selectUserId } from 'selectors';
 import { ROLE } from 'constants';
+import PropTypes from 'prop-types';
+import { PROP_TYPE } from 'constants';
 
 const CommentsContainer = ({ className, comments, postId }) => {
   const [text, setText] = useState('');
@@ -63,7 +64,7 @@ export const Comments = styled(CommentsContainer)`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  /* display: flex; */
+
   & textarea {
     width: 100%;
     height: 164px;
@@ -83,3 +84,9 @@ export const Comments = styled(CommentsContainer)`
     gap: 10px;
   }
 `;
+
+CommentsContainer.propTypes = {
+  className: PropTypes.string,
+  comments: PropTypes.arrayOf(PROP_TYPE.COMMENT).isRequired,
+  postId: PropTypes.string.isRequired,
+};

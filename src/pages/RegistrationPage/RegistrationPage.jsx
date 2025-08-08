@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Link, Navigate } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
-import { server } from 'bff';
+
 import { FormError, Input, Button, H2 } from 'components';
 import { setUser } from 'actions';
 import { selectUserRole } from 'selectors';
@@ -108,8 +108,6 @@ const RegistrationPageContainer = ({ className }) => {
   );
 };
 
-RegistrationPageContainer.propTypes = {};
-
 export const RegistrationPage = styled(RegistrationPageContainer)`
   display: flex;
   flex-direction: column;
@@ -124,3 +122,7 @@ export const RegistrationPage = styled(RegistrationPageContainer)`
     width: 260px;
   }
 `;
+
+RegistrationPageContainer.propTypes = {
+  className: PropTypes.string,
+};

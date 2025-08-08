@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Logo, ControlPanel } from '../../components';
+import PropTypes from 'prop-types';
 
 const Description = styled.div`
   font-style: italic;
@@ -35,3 +36,7 @@ export const Header = styled(HeaderContainer)`
   box-shadow: 0 -2px 17px #616161;
   background-color: #fff;
 `;
+
+HeaderContainer.propTypes = {
+  className: PropTypes.string,
+};

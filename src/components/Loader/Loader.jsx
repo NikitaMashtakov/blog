@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
 export const Loader = styled.span`
-  margin: auto;
-  width: 20px;
-  height: 20px;
+  width: ${({ size = '20px' }) => size};
+  height: ${({ size = '20px' }) => size};
   border-radius: 50%;
   display: inline-block;
   border-top: 3px solid #6ebeff;

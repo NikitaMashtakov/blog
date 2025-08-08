@@ -6,6 +6,13 @@ import { selectPosts, selectTotalCount } from 'selectors';
 import styled from 'styled-components';
 import { PostCard } from './components/PostCard/PostCard';
 import { Pagination } from './components/Pagination/Pagination';
+import { Input } from 'components';
+import useDebouncedValue from 'hooks/useDebouncedValue';
+import PropTypes from 'prop-types';
+
+const SearchInput = styled(Input)`
+  width: 320px;
+`;
 
 const MainPageContainer = ({ className }) => {
   const dispatch = useDispatch();
@@ -13,27 +20,41 @@ const MainPageContainer = ({ className }) => {
   const posts = useSelector(selectPosts);
   const [page, setPage] = useState(1);
   const limit = '6';
-  const search = ' ';
+  const [search, setSearch] = useState('');
   const lastPage = Math.ceil(useSelector(selectTotalCount) / limit);
   const changePage = (pageNum) => {
     setPage(pageNum);
   };
+  const debouncedSearch = useDebouncedValue(search, 1000);
+  const handleSearch = (value) => {
+    setSearch(value);
+  };
   useEffect(() => {
-    dispatch(loadPostsAsync(requestServer, String(page), limit, search));
-  }, [dispatch, page, requestServer]);
+    dispatch(loadPostsAsync(requestServer, String(page), limit, debouncedSearch));
+  }, [dispatch, page, requestServer, debouncedSearch]);
+
   return (
     <div className={className}>
-      <div className="post-list">
-        {posts.map(({ id, imageUrl, title, publishedAt, commentsCount }) => (
-          <PostCard
-            key={id}
-            id={id}
-            imageUrl={imageUrl}
-            title={title}
-            publishedAt={publishedAt}
-            commentsCount={commentsCount}
-          />
-        ))}
+      <div className="main">
+        <SearchInput
+          type="text"
+          name="search"
+          value={search}
+          placeholder="Поиск..."
+          onChange={({ target }) => handleSearch(target.value)}
+        />
+        <div className="post-list">
+          {posts.map(({ id, imageUrl, title, publishedAt, commentsCount }) => (
+            <PostCard
+              key={id}
+              id={id}
+              imageUrl={imageUrl}
+              title={title}
+              publishedAt={publishedAt}
+              commentsCount={commentsCount}
+            />
+          ))}
+        </div>
       </div>
       <Pagination changePage={changePage} page={page} lastPage={lastPage} />
     </div>
@@ -44,7 +65,13 @@ export const MainPage = styled(MainPageContainer)`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  & .main {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
   & .post-list {
     display: grid;
     gap: 20px;
@@ -53,4 +80,14 @@ export const MainPage = styled(MainPageContainer)`
     justify-items: center;
     padding: 30px;
   }
+  & .input-container {
+    width: 320px;
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+  }
 `;
+
+MainPageContainer.propTypes = {
+  className: PropTypes.string,
+};

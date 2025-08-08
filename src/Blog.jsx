@@ -1,9 +1,6 @@
 import { Outlet } from 'react-router';
 import styled from 'styled-components';
 import { Header, Footer } from './components';
-import { useLayoutEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { setUser } from 'actions';
 import { Modal } from 'components/Modal/Modal';
 
 const AppColumn = styled.div`
@@ -11,25 +8,20 @@ const AppColumn = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 1000px;
-  min-height: 100%;
+  min-height: 100vh;
   background-color: #fff;
   margin: 0 auto;
+  position: relative;
 `;
 
 const Content = styled.div`
   padding: 120px 0;
-  height: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 function Blog() {
-  const dispatch = useDispatch();
-  useLayoutEffect(() => {
-    const userData = JSON.parse(sessionStorage.getItem('user'));
-    if (userData) {
-      dispatch(setUser(userData));
-    }
-  }, [dispatch]);
-
   return (
     <AppColumn>
       <Header />

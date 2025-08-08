@@ -1,9 +1,9 @@
 import { Button } from 'components';
-import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const PaginationContainer = ({ className, changePage, page, lastPage }) => {
-  return (
+  return lastPage === 1 ? null : (
     <div className={className}>
       <Button disabled={page === 1} onClick={() => changePage(1)}>
         В начало
@@ -26,6 +26,9 @@ export const Pagination = styled(PaginationContainer)`
   display: flex;
   gap: 10px;
   padding: 20px 50px;
+  width: 100%;
+  position: absolute;
+  bottom: 140px;
   & .page {
     display: flex;
     align-items: center;
@@ -34,3 +37,10 @@ export const Pagination = styled(PaginationContainer)`
     white-space: nowrap;
   }
 `;
+
+PaginationContainer.propTypes = {
+  className: PropTypes.string,
+  changePage: PropTypes.func.isRequired,
+  page: PropTypes.number.isRequired,
+  lastPage: PropTypes.number.isRequired,
+};

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useLayoutEffect, useState } from 'react';
 import styled from 'styled-components';
 import { PostContent } from './components/PostContent/PostCOntent';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,9 +6,11 @@ import { useMatch, useParams } from 'react-router';
 import { useServerRequest } from 'hooks';
 import { loadPostAsync } from 'actions/loadPostAsync';
 import { selectPost } from 'selectors';
-import { loadCommentsAsync } from 'actions/loadCommentsAsync';
 import { Comments } from './components/Comments/Comments';
 import { PostForm } from './components/PostForm/PostForm';
+import { ErrorPage } from 'pages/ErrorPage/ErrorPage';
+import { Loader } from 'components';
+import PropTypes from 'prop-types';
 
 const PostPageContainer = ({ className }) => {
   const dispatch = useDispatch();
@@ -17,16 +19,24 @@ const PostPageContainer = ({ className }) => {
   const isCreating = useMatch('/post');
   const requestServer = useServerRequest();
   const post = useSelector(selectPost);
-
-  useEffect(() => {
-    params.id && dispatch(loadPostAsync(requestServer, params.id));
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  useLayoutEffect(() => {
+    params.id
+      ? dispatch(loadPostAsync(requestServer, params.id)).then((res) => {
+          setError(res.error);
+          setIsLoading(false);
+        })
+      : setIsLoading(false);
   }, [dispatch, params.id, requestServer, isEditing]);
 
-  console.log('isEditing', isEditing);
-  console.log('isCreating', isCreating);
   return (
     <div className={className}>
-      {isEditing ? (
+      {isLoading ? (
+        <Loader size="40px" />
+      ) : error ? (
+        <ErrorPage />
+      ) : isEditing ? (
         <PostForm post={isEditing && post} />
       ) : isCreating ? (
         <PostForm isCreating={isCreating} />
@@ -47,3 +57,7 @@ export const PostPage = styled(PostPageContainer)`
   align-items: center;
   padding: 40px 60px 0 60px;
 `;
+
+PostPageContainer.propTypes = {
+  className: PropTypes.string,
+};
