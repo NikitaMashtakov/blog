@@ -1,4 +1,3 @@
-// import { addUser } from '../api';
 import { ROLE } from './../constants';
 import { getRoles } from '../api';
 import { sessions } from '../sessions';
