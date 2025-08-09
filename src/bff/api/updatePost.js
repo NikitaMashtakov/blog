@@ -10,4 +10,3 @@ export const updatePost = async (postId, newPostData) =>
       content: newPostData.newContent,
     }),
   });
-// .then((updatedUser) => updatedUser.json());
