@@ -1,6 +1,6 @@
 import { loadPostsAsync } from 'actions';
 import { useServerRequest } from 'hooks';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectPosts, selectTotalCount } from 'selectors';
 import styled from 'styled-components';
@@ -29,10 +29,14 @@ const MainPageContainer = ({ className }) => {
   const handleSearch = (value) => {
     setSearch(value);
   };
-  useEffect(() => {
-    dispatch(loadPostsAsync(requestServer, String(page), limit, debouncedSearch));
-  }, [dispatch, page, requestServer, debouncedSearch]);
-
+  // useEffect(() => {
+  //   dispatch(loadPostsAsync(requestServer, String(page), limit, debouncedSearch));
+  // }, [dispatch, page, requestServer, debouncedSearch]);
+  useLayoutEffect(() => {
+    fetch('/api/posts')
+      .then((data) => data.json())
+      .then(console.log);
+  }, []);
   return (
     <div className={className}>
       <div className="main">

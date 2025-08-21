@@ -16,6 +16,15 @@ export default defineConfig(({ mode }) => {
         },
       }),
     ],
+    server: {
+      proxy: {
+        '/api': {
+          target: 'http://localhost:3001', // Backend server
+          changeOrigin: true, // Ensure the request appears to come from the frontend server
+          rewrite: (path) => path.replace(/^\/api/, ''), // Optional: Remove '/api' prefix
+        },
+      },
+    },
     resolve: {
       alias: {
         components: path.resolve(__dirname, './src/components'),
