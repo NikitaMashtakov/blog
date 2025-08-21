@@ -1,7 +1,9 @@
+import { request } from 'utils/request';
 import { setPostsData } from './setPostsData';
 
-export const loadPostsAsync = (requestServer, page, limit, search) => (dispatch) => {
-  requestServer('fetchPosts', page, limit, search).then(({ res }) => {
-    dispatch(setPostsData(res));
+export const loadPostsAsync = (search, limit, page) => (dispatch) => {
+  request('/api/posts', { page, limit, search }).then(({ posts }) => {
+    console.log(posts);
+    dispatch(setPostsData(posts));
   });
 };

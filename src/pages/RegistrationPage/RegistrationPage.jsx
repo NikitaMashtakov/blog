@@ -12,6 +12,7 @@ import { selectUserRole } from 'selectors';
 import { ROLE } from 'constants';
 import styled from 'styled-components';
 import { useServerRequest } from 'hooks';
+import { request } from 'utils/request';
 
 const StyledLink = styled(Link)`
   text-align: center;
@@ -62,12 +63,12 @@ const RegistrationPageContainer = ({ className }) => {
   const requestServer = useServerRequest();
 
   const onSubmit = ({ login, password }) => {
-    requestServer('register', login, password).then(({ error, res }) => {
+    request('/api/register', 'POST', { login, password }).then(({ error, user }) => {
       if (error) {
         setServerError(`Ошибка запроса ${error}`);
         return;
       }
-      dispatch(setUser(res));
+      dispatch(setUser(user));
     });
   };
 

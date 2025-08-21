@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { useServerRequest } from 'hooks';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { request } from 'utils/request';
 
 const StyledLink = styled(Link)`
   text-align: center;
@@ -56,13 +57,13 @@ const AuthPageContainer = ({ className }) => {
   const requestServer = useServerRequest();
 
   const onSubmit = ({ login, password }) => {
-    requestServer('authorize', login, password).then(({ error, res }) => {
+    request('/api/login', 'POST', { login, password }).then(({ error, user }) => {
       if (error) {
         setServerError(`Ошибка запроса ${error}`);
         return;
       }
-      dispatch(setUser(res));
-      sessionStorage.setItem('user', JSON.stringify(res));
+      dispatch(setUser(user));
+      sessionStorage.setItem('user', JSON.stringify(user));
     });
   };
   const formError = errors?.login?.message || errors?.password?.message;

@@ -29,14 +29,10 @@ const MainPageContainer = ({ className }) => {
   const handleSearch = (value) => {
     setSearch(value);
   };
-  // useEffect(() => {
-  //   dispatch(loadPostsAsync(requestServer, String(page), limit, debouncedSearch));
-  // }, [dispatch, page, requestServer, debouncedSearch]);
-  useLayoutEffect(() => {
-    fetch('/api/posts')
-      .then((data) => data.json())
-      .then(console.log);
-  }, []);
+  useEffect(() => {
+    dispatch(loadPostsAsync(debouncedSearch, limit, String(page)));
+  }, [dispatch, page, debouncedSearch]);
+
   return (
     <div className={className}>
       <div className="main">
