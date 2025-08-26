@@ -1,8 +1,7 @@
 import { loadPostsAsync } from 'actions';
-import { useServerRequest } from 'hooks';
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectPosts, selectTotalCount } from 'selectors';
+import { selectPosts, selectLastPage } from 'selectors';
 import styled from 'styled-components';
 import { PostCard } from './components/PostCard/PostCard';
 import { Pagination } from './components/Pagination/Pagination';
@@ -16,12 +15,11 @@ const SearchInput = styled(Input)`
 
 const MainPageContainer = ({ className }) => {
   const dispatch = useDispatch();
-  const requestServer = useServerRequest();
   const posts = useSelector(selectPosts);
   const [page, setPage] = useState(1);
   const limit = '6';
   const [search, setSearch] = useState('');
-  const lastPage = Math.ceil(useSelector(selectTotalCount) / limit);
+  const lastPage = useSelector(selectLastPage);
   const changePage = (pageNum) => {
     setPage(pageNum);
   };
@@ -44,14 +42,14 @@ const MainPageContainer = ({ className }) => {
           onChange={({ target }) => handleSearch(target.value)}
         />
         <div className="post-list">
-          {posts.map(({ id, imageUrl, title, publishedAt, commentsCount }) => (
+          {posts.map(({ id, imageUrl, title, publishedAt, comments }) => (
             <PostCard
               key={id}
               id={id}
               imageUrl={imageUrl}
               title={title}
               publishedAt={publishedAt}
-              commentsCount={commentsCount}
+              commentsCount={comments.length}
             />
           ))}
         </div>

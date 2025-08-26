@@ -1,7 +1,8 @@
-import { setPostComments } from './setPostComments';
+import { request } from 'utils/request';
+import { addComment } from './addComment';
 
-export const addCommentAsync = (requestServer, authorId, postId, text) => (dispatch) => {
-  requestServer('addPostComment', authorId, postId, text).then(({ res }) => {
-    dispatch(setPostComments(res));
+export const addCommentAsync = (postId, text) => (dispatch) => {
+  request(`/api/posts/${postId}/comments`, { text }).then(({ res }) => {
+    dispatch(addComment(res));
   });
 };
